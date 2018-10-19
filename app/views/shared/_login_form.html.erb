@@ -1,0 +1,9 @@
+<h3>Log in to view and join events</h3>
+<div>
+	<%= form_for :session do |f| %>
+		<%= f.label :email %><br>
+		<%= f.email_field :email %><br><br>
+
+		<%= f.submit "Log in!" %><br>
+	<% end %>
+</div>

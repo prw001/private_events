@@ -1,0 +1,14 @@
+<title>Create an Event</title>
+<%= form_for :event do |f| %>
+	<h2><%= f.label :title %></h2>
+	<%= f.text_field :title, {required: true} %><br><br>
+
+	<span>
+		<h2><%= f.label :date %></h2>
+
+		<%= f.date_select :date, {order: [:month, :day, :year], prompt: {day: 'Select Day', month: 'Select Month', year: 'Select Year'}, start_year: Date.today.year, end_year: Date.today.year + 5}, {required: true} %>
+		
+	</span><br><br>
+
+	<%= f.submit "Create event" %>
+<% end %>

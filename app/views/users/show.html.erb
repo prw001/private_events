@@ -1,0 +1,17 @@
+<title><%= @user.name %>'s Profile</title>
+
+<h3><%= @user.name %>'s Events:</h3>
+	<% if @user.events.any? %>
+		<ul>
+			<% @user.events.each do |event| %>
+				<li>
+					Event: <%= event.title %><br>
+					Date: <%= clean_up_date(event.date) %>
+				</li>
+			<% end %>
+		</ul>
+	<% else %>
+		<div>
+			<%= @user.name %> hasn't hosted any events yet.
+		</div>
+	<% end %>
