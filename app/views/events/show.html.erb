@@ -1,4 +1,23 @@
 <title>View Event</title>
-Event: <%= @event.title %><br>
-Host: <%= @event.user.name %><br>
-Date: <%= clean_up_date(@event.date) %><br>
+<h2>Details</h2>
+<div>
+	Event: <%= @event.title %><br>
+	Host: <%= @event.user.name %><br>
+	Date: <%= clean_up_date(@event.date) %><br>
+</div>
+
+<h3>Attendees</h3>
+<div>
+	<% if @event.attendances.any? %>
+	<h5><%= "#{@num_attending}" + " Person".pluralize(@num_attending) %> attending this event.</h5>
+		<ul>
+			<% @event.attendances.each do |attendance| %>
+				<li>
+					<%= User.find_by(id: attendance.user_id).name %>
+				</li>
+			<% end %>
+		</ul>
+	<% else %>
+		<p>No one is attending this event, be the first to join!</p>
+	<% end %>
+</div>
