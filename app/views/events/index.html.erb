@@ -6,7 +6,7 @@
 	<ul>
 		<% @upcoming_events.each do |event| %>
 			<li>
-				Event: <%= event.title %><br />
+				Event: <%= link_to "#{event.title}", show_event_path(:id => "#{event.id}") %><br />
 				Host: <%= event.user.name %><br />
 				Date: <%= clean_up_date(event.date) %><br /><br />
 			</li>
@@ -21,7 +21,7 @@
 	<ul>
 		<% @past_events.each do |event| %>
 			<li>
-				Event: <%= event.title %><br />
+				Event: <%= link_to "#{event.title}", show_event_path(:id => "#{event.id}") %><br />
 				Host: <%= event.user.name %><br />
 				Date: <%= clean_up_date(event.date) %><br />
 			</li>

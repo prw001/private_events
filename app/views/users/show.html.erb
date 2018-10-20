@@ -5,8 +5,12 @@
 		<ul>
 			<% @user.events.each do |event| %>
 				<li>
-					Event: <%= event.title %><br>
-					Date: <%= clean_up_date(event.date) %>
+					<span>
+						Event: <%= link_to "#{event.title}", show_event_path(:id => "#{event.id}") %>
+					</span><br>
+					<span>
+						Date: <%= clean_up_date(event.date) %>
+					</span>
 				</li>
 			<% end %>
 		</ul>
@@ -23,8 +27,12 @@
 			<% @upcoming_events.each do |rsvp| %>
 				<% event = Event.find_by(id: rsvp.event_id) %>
 				<li>
-					<span>Event: <%= event.title %></span><br>
-					<span>Date: <%= clean_up_date(event.date) %></span>
+					<span>
+						Event: <%= link_to "#{event.title}", show_event_path(:id => "#{event.id}") %>
+					</span><br>
+					<span>
+						Date: <%= clean_up_date(event.date) %>
+					</span>
 				</li>
 			<% end %>
 		</ul>
@@ -37,7 +45,7 @@
 			<% @past_events.each do |rsvp| %>
 				<% event = Event.find_by(id: rsvp.event_id) %>
 				<li>
-					<span>Event: <%= event.title %></span><br>
+					<span>Event: <%= link_to "#{event.title}", show_event_path(:id => "#{event.id}") %></span><br>
 					<span>Date: <%= clean_up_date(event.date) %></span>
 				</li>
 			<% end %>
