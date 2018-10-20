@@ -6,8 +6,6 @@ Rails.application.routes.draw do
 
 	post 'signup', to: 'users#create'
 
-	get 'user', to: 'users#show'
-
 	get 'login', to: 'sessions#new'
 
 	post 'login', to: 'sessions#create'
@@ -21,4 +19,6 @@ Rails.application.routes.draw do
 	post 'create_event', to: 'events#create'
 
 	delete 'logout', to: 'sessions#destroy'
+
+	resources :users
 end
