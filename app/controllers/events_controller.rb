@@ -20,12 +20,33 @@ class EventsController < ApplicationController
 	end
 
 	def index
-
+		@upcoming_events = get_upcoming_events
+		@past_events = get_past_events
 	end
 
 	private
 
 		def event_params
 			params.require(:event).permit(:title, :date)
+		end
+
+		def get_upcoming_events
+			upcoming = []
+			Event.all.each do |event|
+				if !event.is_past?
+					upcoming << event 
+				end
+			end
+			upcoming
+		end
+
+		def get_past_events
+			past = []
+			Event.all.each do |event| 
+				if event.is_past?
+					past << event 
+				end
+			end
+			past
 		end
 end

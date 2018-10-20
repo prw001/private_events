@@ -15,3 +15,33 @@
 			<%= @user.name %> hasn't hosted any events yet.
 		</div>
 	<% end %>
+
+<h3><%= @user.name %>'s attendances:</h3>
+	<h5>Upcoming events:</h5>
+	<% if @upcoming_events.any? %>
+		<ul>
+			<% @upcoming_events.each do |rsvp| %>
+				<% event = Event.find_by(id: rsvp.event_id) %>
+				<li>
+					<span>Event: <%= event.title %></span><br>
+					<span>Date: <%= clean_up_date(event.date) %></span>
+				</li>
+			<% end %>
+		</ul>
+	<% else %>
+		<p>No upcoming events</p>
+	<% end %>
+	<h5>Past events:</h5>
+	<% if @past_events.any? %>
+		<ul>
+			<% @past_events.each do |rsvp| %>
+				<% event = Event.find_by(id: rsvp.event_id) %>
+				<li>
+					<span>Event: <%= event.title %></span><br>
+					<span>Date: <%= clean_up_date(event.date) %></span>
+				</li>
+			<% end %>
+		</ul>
+	<% else %>
+		<p>No past events</p>
+	<% end %>
