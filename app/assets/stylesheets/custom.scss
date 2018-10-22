@@ -1,0 +1,67 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+/* universal */
+
+body{
+	margin: 20px;
+	background: #f3f5fa;
+}
+
+#main_container{
+	text-align: center;
+}
+
+#content{
+	position: relative;
+	text-align: center;
+	padding: 20px 0 20px 0;
+	background: #efeaea;
+}
+
+a{
+	font-weight: 600;
+
+}
+
+/* header & header navigation links */
+
+#header_box{
+	margin: 10px;
+	height: 30px;
+}
+
+.header_links{
+	position: relative;
+	display: inline-block;
+}
+
+#header_links_top_left{
+	float: left;
+}
+
+#header_links_top_right{
+	float: right;
+}
+
+/* user profile display */
+
+.profile_header{
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+
+.profile_sub_header{
+	font-size: 20px;
+	margin-top: 3px;
+}
+
+.event_list{
+	position: relative;
+	right: 18px;
+	list-style: none;
+}
+
+.event_item{
+	
+}

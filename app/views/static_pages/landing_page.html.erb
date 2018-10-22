@@ -1,14 +1,15 @@
 <title>Private Events Home</title>
 <h1>Welcome to Private Events<% if logged_in? %>, <%= @current_user.name %><% end %></h1>
-<% if logged_in? %>
-	<%= link_to "Log out", logout_path, method: :delete %>
-<% end %>
-
 <div>
 	<% unless logged_in? %>
 		<p>Looking to sign up? <%= link_to 'Sign up here', signup_path %></p>
 		<p>Already a member? <%= link_to 'Log in here', login_path %></p>
 	<% else %>
-		Find or view events:
+		<div>
+			Your events:
+		</div>
+		<div>
+			Pending invitations:
+		</div>
 	<% end %>
 </div>

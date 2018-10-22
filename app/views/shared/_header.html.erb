@@ -1,9 +1,9 @@
-<div>
-	<div>
+<div id="header_box">
+	<div class="header_links", id="header_links_top_left">
 		<%= link_to "Home", root_url %> | 
 		<%= link_to "Events", all_events_path %>
 	</div>
-	<div>
+	<div class="header_links", id="header_links_top_right">
 		<% if logged_in? %>
 			<%= link_to "My Profile", current_user %> | 
 			<%= link_to "Log out", logout_path, method: :delete %>
