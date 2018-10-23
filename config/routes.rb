@@ -24,7 +24,9 @@ Rails.application.routes.draw do
 
 	post 'invite', to: 'event_invites#create'
 
-	delete 'invite', to: 'event_invites#destroy'
+	patch '/', to: 'event_invites#update'
+
+	delete '/', to: 'event_invites#destroy'
 
 	resources :users
 end

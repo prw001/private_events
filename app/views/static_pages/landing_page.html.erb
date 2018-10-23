@@ -29,7 +29,8 @@
 						<li class="invite">
 							<%= link_to "#{invite.host.name}",
 								user_path(:id => "#{invite.host_id}") %> has invited you to <%= link_to "#{invite.event.title}", show_event_path(:id => "#{invite.event_id}") %><br>
-							Accept? Yes | No<br>
+								<%= render partial: 'shared/accept_invite_form', locals: {event_invite: invite} %>
+							<br>
 						</li>
 					<% end %>
 				</ul>

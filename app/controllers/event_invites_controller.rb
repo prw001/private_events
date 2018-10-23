@@ -19,8 +19,13 @@ class EventInvitesController < ApplicationController
 	def save
 	end
 
-	def destroy
-
+	def update
+		@event_invite.update_attribute(accepted: params['accepted'])
+		if @event_invite.save
+			respond_to do |format| 
+				format.js { render 'event_invites/update_invite_selection' }
+			end
+		end
 	end
 
 	private

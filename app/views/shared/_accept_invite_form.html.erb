@@ -1,0 +1,7 @@
+<div>
+	<span>Accept?
+	<%= form_for event_invite, method: "patch" do |f| %>
+		<%= f.submit "Yes", :name => 'accepted' %> | <%= f.submit "No", :name => 'accepted' %>
+	<% end %>
+	</span>
+</div>
