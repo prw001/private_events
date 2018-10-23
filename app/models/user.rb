@@ -4,4 +4,6 @@ class User < ApplicationRecord
 			 		  uniqueness: {case_sensitive: false }
 	has_many :events
 	has_many :attendances
+	has_many :invitations, foreign_key: "recipient_id", class_name: "EventInvite"
+
 end

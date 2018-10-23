@@ -6,10 +6,38 @@
 		<p>Already a member? <%= link_to 'Log in here', login_path %></p>
 	<% else %>
 		<div>
-			Your events:
+			<h3>Events you are hosting:</h3>
+			<% if @current_user.events.any? %>
+				<ul class = "event_list">
+				<% @current_user.events.sort.reverse.each do |event| %>
+					<li class="event_item">
+						<i>Event:</i> <%=  link_to "#{event.title}", show_event_path(:id => "#{event.id}") %>
+					<br>
+						<i>Date:</i> <%= clean_up_date(event.date) %></strong>
+					</li>
+				<% end %>
+				</ul>
+			<% else %>
+				<p>You are not hosting any events.</p>
+			<% end %>
 		</div>
 		<div>
-			Pending invitations:
+			<h3>Pending invitations:</h3>
+			<% if @current_user.invitations.any? %>
+				<ul class = "invite_list">
+					<% @current_user.invitations.each do |invite| %>
+						<li class="invite">
+							<%= link_to "#{invite.host.name}",
+								user_path(:id => "#{invite.host_id}") %> has invited you to <%= link_to "#{invite.event.title}", show_event_path(:id => "#{invite.event_id}") %><br>
+							Accept? Yes | No<br>
+						</li>
+					<% end %>
+				</ul>
+			<% else %>
+				<p>You have no pending invitations</p>
+			<% end %>
 		</div>
 	<% end %>
+
+	<p id="create_event_text">Planning your next event? <%= link_to "Create it here", create_event_path %></p>
 </div>

@@ -1,0 +1,11 @@
+<div>
+	<%= form_for :event_invite do |f| %>
+
+		<%= f.hidden_field :host_id, value: current_user.id %>
+		<%= f.label "Select an Event" %><br>
+		<%= f.select :event_id, options_for_select(current_user.events.map{ |detail| [detail['title'], detail['id']] }) %><br><br>
+		<%= f.label "Email of the guest" %><br>
+		<%= f.email_field :recipient_id %><br>
+		<%= f.submit "Send Invite!" %>
+	<% end %>
+</div>

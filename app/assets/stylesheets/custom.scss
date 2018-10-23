@@ -24,6 +24,31 @@ a{
 
 }
 
+.event_list{
+	position: relative;
+	right: 18px;
+	list-style: none;
+}
+
+.event_item{
+	
+}
+
+/* flash/alert messages */
+
+.alert #alert-success{
+	
+}
+
+.alert #alert-warning{
+	
+}
+
+.alert #alert-notice{
+	background: lightblue;
+	color: blue;	
+}
+
 /* header & header navigation links */
 
 #header_box{
@@ -56,12 +81,11 @@ a{
 	margin-top: 3px;
 }
 
-.event_list{
-	position: relative;
-	right: 18px;
-	list-style: none;
-}
+/* landing page */
 
-.event_item{
-	
+#create_event_text{
+	font-size: 20px;
+	font-weight: 600;
+	color: #347885;
+	font-style: italic;
 }

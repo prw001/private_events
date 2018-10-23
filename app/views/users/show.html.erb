@@ -41,10 +41,10 @@
 	<% end %>
 	<h5 class="profile_sub_header">Past events (<%= "#{@past_events.count}"%>):</h5>
 	<% if @past_events.any? %>
-		<ul>
+		<ul class="event_list">
 			<% @past_events.each do |rsvp| %>
 				<% event = Event.find_by(id: rsvp.event_id) %>
-				<li>
+				<li class="event_item">
 					<span>Event: <%= link_to "#{event.title}", show_event_path(:id => "#{event.id}") %></span><br>
 					<span>Date: <%= clean_up_date(event.date) %></span>
 				</li>

@@ -10,9 +10,9 @@
 <div>
 	<% if @event.attendances.any? %>
 	<h5><%= "#{@num_attending}" + " Person".pluralize(@num_attending) %> attending this event.</h5>
-		<ul>
+		<ul class="event_list">
 			<% @event.attendances.each do |attendance| %>
-				<li>
+				<li class="event_item">
 					<%= User.find_by(id: attendance.user_id).name %>
 				</li>
 			<% end %>

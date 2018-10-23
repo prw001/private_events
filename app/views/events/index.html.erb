@@ -3,9 +3,9 @@
 
 <h3>Upcoming Events:</h3>
 <% if @upcoming_events.any? %>
-	<ul>
+	<ul class="event_list">
 		<% @upcoming_events.each do |event| %>
-			<li>
+			<li class="event_item">
 				Event: <%= link_to "#{event.title}", show_event_path(:id => "#{event.id}") %><br />
 				Host: <%= event.user.name %><br />
 				Date: <%= clean_up_date(event.date) %><br /><br />
@@ -18,9 +18,9 @@
 <br>
 <h3>Past Events:</h3>
 <% if @past_events.any? %>
-	<ul>
+	<ul class="event_list">
 		<% @past_events.each do |event| %>
-			<li>
+			<li class="event_item">
 				Event: <%= link_to "#{event.title}", show_event_path(:id => "#{event.id}") %><br />
 				Host: <%= event.user.name %><br />
 				Date: <%= clean_up_date(event.date) %><br />
