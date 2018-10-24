@@ -24,10 +24,16 @@ a{
 
 }
 
-.event_list{
+.event_list, .invite_list{
 	position: relative;
 	right: 18px;
 	list-style: none;
+}
+
+.invite_item{
+	font-style: italic;
+	font-weight: 600;
+	color: #1f1f2c;
 }
 
 .event_item{

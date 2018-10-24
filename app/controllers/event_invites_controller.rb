@@ -2,17 +2,18 @@ class EventInvitesController < ApplicationController
 	before_action :email_exists?, only: :create
 
 	def new
+		@event_invite = EventInvite.new
 	end
 
 	def create
 		i_p = invite_params
-		@event_invite = EventInvite.new(i_p)
+		@event_invite = EventInvite.create(i_p)
 		if @event_invite.save
 			flash[:success] = "Invite sent!"
 			redirect_to root_url
 		else
 			flash[:warning] = "Invite not sent."
-			render 'new'
+			render redirect_to event_invite_url
 		end
 	end
 
@@ -20,11 +21,19 @@ class EventInvitesController < ApplicationController
 	end
 
 	def update
-		@event_invite.update_attribute(accepted: params['accepted'])
-		if @event_invite.save
-			respond_to do |format| 
-				format.js { render 'event_invites/update_invite_selection' }
+		@event_invite = EventInvite.find_by(id: params['event_invite']['id'])
+		if params['accepted'] == "Yes"
+			@event_invite.update(accepted: true)
+			if @event_invite.save
+				respond_to do |format|
+					format.js { render 'event_invites/update_invite_selection'}
+				end
 			end
+		else
+			respond_to do |format|
+				format.js { render 'event_invites/update_invite_selection'}
+			end
+			@event_invite.delete
 		end
 	end
 
@@ -33,7 +42,7 @@ class EventInvitesController < ApplicationController
 		def email_exists?
 			unless User.find_by(email: params['event_invite']['recipient_id'])
 				flash['warning'] = "Could not locate a user with that email"
-				render 'new'
+				redirect_to event_invite_url
 			end
 		end
 

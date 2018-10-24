@@ -20,13 +20,15 @@ Rails.application.routes.draw do
 
 	delete 'logout', to: 'sessions#destroy'
 
-	get 'invite', to: 'event_invites#new'
+	get 'event_invite', to: 'event_invites#new'
 
-	post 'invite', to: 'event_invites#create'
+	post 'event_invite', to: 'event_invites#create'
 
 	patch '/', to: 'event_invites#update'
 
 	delete '/', to: 'event_invites#destroy'
 
 	resources :users
+
+	resources :event_invites
 end

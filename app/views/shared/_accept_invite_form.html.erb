@@ -1,7 +1,20 @@
 <div>
-	<span>Accept?
-	<%= form_for event_invite, method: "patch" do |f| %>
-		<%= f.submit "Yes", :name => 'accepted' %> | <%= f.submit "No", :name => 'accepted' %>
+<ul class = "invite_list">
+	<% @current_user.invitations.each do |event_invite| %>
+		<% if !(event_invite.accepted) %>
+			<li class="invite_item" id="invite_<%= event_invite.id %>" >
+				<%= link_to "#{event_invite.host.name}", 
+				user_path(:id => "#{event_invite.host_id}") %> 
+				has invited you to 
+				<%= link_to "#{event_invite.event.title}", show_event_path(:id => "#{event_invite.event_id}") %><br>Will you attend?
+				<%= form_for :event_invite, method: 'patch', remote: true, html: {:id => "accept_form_#{event_invite.id}"} do |f| %>
+					<%= f.hidden_field :id, value: event_invite.id %>
+					<%= f.submit "Yes", :name => 'accepted' %> | <%= f.submit "No", :name => 'accepted' %>
+				<% end %>
+				<br>
+			</li>
+		<% end %>
 	<% end %>
-	</span>
+</ul>
 </div>
+<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>

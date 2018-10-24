@@ -11,9 +11,9 @@
 	<% if @event.attendances.any? %>
 	<h5><%= "#{@num_attending}" + " Person".pluralize(@num_attending) %> attending this event.</h5>
 		<ul class="event_list">
-			<% @event.attendances.each do |attendance| %>
+			<% @event.attendees.each do |attendee| %>
 				<li class="event_item">
-					<%= User.find_by(id: attendance.user_id).name %>
+					<%= attendee.name %>
 				</li>
 			<% end %>
 		</ul>
@@ -21,3 +21,6 @@
 		<p>No one is attending this event, be the first to join!</p>
 	<% end %>
 </div>
+<h3>Invite friends to join!</h3>
+<div>
+	<%= link_to "Send Invites", event_invite_path %>
