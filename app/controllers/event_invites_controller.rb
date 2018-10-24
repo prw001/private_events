@@ -1,5 +1,6 @@
 class EventInvitesController < ApplicationController
 	before_action :email_exists?, only: :create
+	before_action :already_invited?, only: :create
 
 	def new
 		@event_invite = EventInvite.new
@@ -13,7 +14,7 @@ class EventInvitesController < ApplicationController
 			redirect_to root_url
 		else
 			flash[:warning] = "Invite not sent."
-			render redirect_to event_invite_url
+			redirect_to event_invite_url
 		end
 	end
 
@@ -42,6 +43,14 @@ class EventInvitesController < ApplicationController
 		def email_exists?
 			unless User.find_by(email: params['event_invite']['recipient_id'])
 				flash['warning'] = "Could not locate a user with that email"
+				redirect_to event_invite_url
+			end
+		end
+
+		def already_invited?
+			if (EventInvite.find_by(invite_params))
+				flash[:warning] = "That person has already been invited."
+
 				redirect_to event_invite_url
 			end
 		end

@@ -1,2 +1,7 @@
 $('#accept_form_<%= @event_invite.id %>').hide();
-document.getElementById("invite_<%= @event_invite.id %>").innerText = "Invite Accepted.";
+invite = document.getElementById("invite_<%= @event_invite.id %>")
+<% if params['accepted'] == "Yes" %>
+	invite.innerText = "Invite Accepted.";
+<% else %>
+	invite.innerText = "Invitation revoked.";
+<% end %>
