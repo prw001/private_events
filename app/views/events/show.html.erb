@@ -21,6 +21,9 @@
 		<p>No one is attending this event, be the first to join!</p>
 	<% end %>
 </div>
-<h3>Invite friends to join!</h3>
-<div>
-	<%= link_to "Send Invites", event_invite_path %>
+<% if current_user == @event.user %>
+	<h3>Invite friends to join!</h3>
+	<div>
+		<%= link_to "Send Invites", event_invite_path(:event_id => @event.id) %>
+	</div>
+<% end %>

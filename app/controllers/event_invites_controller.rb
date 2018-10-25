@@ -4,6 +4,7 @@ class EventInvitesController < ApplicationController
 
 	def new
 		@event_invite = EventInvite.new
+		@event = Event.find_by(id: params['event_id'])
 	end
 
 	def create
